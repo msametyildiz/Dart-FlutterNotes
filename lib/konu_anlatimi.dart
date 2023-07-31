@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:math';
 
 void main(){
  /* var name="samet";
@@ -165,11 +166,84 @@ void main(){
       break;
 
   }
-*/
+
+
+    //      DONGULER    for dongusu
+  int total=0;
+  for (int i=0; i<10; i++){
+    total+=i;
+  }
+  print("total : $total");
+  total=0;
+  for (var j=0; j<=10; j++){
+    total+=j;
+  }
+  print("total : $total \n\n");
+
+  var dizi=[10,20,30];
+  total=0;
+  for (var deger in dizi){
+    total +=deger;
+  }
+print("total : $total");
+
+
+  //    donguler while
+  var i=0,total=0;
+  while (i<10){
+    total+=i;
+    i++;
+    if(i==5){
+      continue;
+    }
+    else if(i==7){
+      break;
+    }
+    else{
+      print("sayac : $i");
+    }
+  }
+  print("total : $total");
 
 
 
+  //      RASTGELE SAYI ÜRETMEK
+  int min=5;
+  int max=10;
+  var r = Random();
+  int rastgele = min + r.nextInt((max-min)+1) ;  //  rastgele sayı üretme formülü
+  print("rastge sayi $rastgele");
+  var i=0,total=0;
+  while(i<100){
+    int rastgele = min + r.nextInt((max-min)+1) ;  //  rastgele sayı üretme formülü
+    print("rastge sayi $rastgele");
+    total+=rastgele;
+    i++;
+  }
+  print("total number : $total");
 
+
+  //            DOUBLE'LARDA YUVARLAMA İŞLEMİ
+
+  double num=25.5;
+  int c= num.ceil();
+  print("new ceil number : $c");
+  int f=num.floor();
+  print("new floor number : $f");
+
+  //              KAREKÖK İŞLEMİ YAPMA
+  double s= sqrt(num);
+  print("new square number : $s");
+
+  //              MUTLAK DEĞER ALMA
+  int i=-10;
+  int mutlak = i.abs();
+  print("mutlak degerli hali : $mutlak");
+
+  //              ÜSLÜ SAYI ALMA
+  num uslu = pow(2,3);  // buradaki num olması gereken bir addir kendimizin atadigi bir sey degil
+  print("uslu sayi : $uslu");
+  */
 
 
 
