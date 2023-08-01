@@ -295,3 +295,24 @@ class kisiler {
   // eğer bir classin constructor i yok ise late kavarmı kullanılır var ise gerekli değil
   kisiler(this.kisi_no, this.kisi_adi);
 }
+
+// ---------------------------------------------CONSRUCTOR KULLANIMI -----------------------------------------------------------------------------
+
+class constuctor{
+  String name ;
+  int age;
+  // 1. yazım    constuctor(this.name , this.yas);
+  // 2. yazım
+  constuctor({required this.name,required this.age});// burada ise her iki tarafında zorunlu doldurulması gereken bir yer olduğunu belirttim.
+
+}
+
+main kısımı ;
+
+1.yazımda
+var nesne = constuctor("samet",22);
+print("ad :  ${nesne.name} \nyas : ${nesne.age}");
+
+2.yazımda
+var nesne = constuctor(name:"samet",age:22);
+print("ad :  ${nesne.name} \nyas : ${nesne.age}");
