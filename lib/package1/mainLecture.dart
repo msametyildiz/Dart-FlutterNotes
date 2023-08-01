@@ -316,3 +316,22 @@ print("ad :  ${nesne.name} \nyas : ${nesne.age}");
 2.yazımda
 var nesne = constuctor(name:"samet",age:22);
 print("ad :  ${nesne.name} \nyas : ${nesne.age}");
+
+
+
+// ---------------------------------------------PUBLIC and PRIVATE KULLANIMI -----------------------------------------------------------------------------
+
+class a{
+late int publicDegisken;
+late int _privateDegisken;
+
+}
+
+
+var nesne = a();
+nesne.publicDegisken=22;//  burada hata alinmaz
+nesne.priveteDegisken=23;// burada degisken private oldugundan dolayı hata alınır
+
+
+
+// ---------------------------------------------      KULLANIMI -----------------------------------------------------------------------------

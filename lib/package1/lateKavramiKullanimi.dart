@@ -29,7 +29,7 @@ class a{
   late int publicDegisken;
   late int _privateDegisken;
 
-  a(this._privateDegisken);
-
-
 }
+var nesne = a();
+nesne.publicDegisken=22;//  burada hata alinmaz
+nesne.priveteDegisken=23;// burada degisken private oldugundan dolayı hata alınır
