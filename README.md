@@ -1,6 +1,7 @@
 # FLUTTER & DART 
 
 A new Flutter project.
+I'm learning Flutter. This repo is the page of my work.
 
 ## Getting Started
 
