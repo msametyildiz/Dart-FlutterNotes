@@ -378,11 +378,64 @@ void ucretal(UrunBoyut boyut){
 
 
 // ---------------------------------------------  COMPOSİTİON  KULLANIMI -----------------------------------------------------------------------------
+//burada iki farklı bir class kullanarak yapıyoruz.
+
+class persons{
+  late String name;
+  late int age;
+  late address adres;
+
+  persons(this.name,this.adres,this.age);
+}
+class address{
+  late String city;
+  late String town;
+
+  address(this.city,this.town);
+}
+void main(){
+  var adres=address("Ankara","Altindag");
+  var kisi=persons("samet",adres, 22);
+  print("${kisi.name} ${kisi.age} ${kisi.adres.city} ${kisi.adres.town}");
+}
+//burada persons classının altında address classı var oradan onlara erisim saglayabiliriz
+
+                      ORNEK 2
+class yonetmenler{
+  late int yonetmen_id;
+  late String yonetmen_adi;
+  yonetmenler(this.yonetmen_adi,this.yonetmen_id);
+}
+class kategoriler{
+  late int kategori_id;
+  late String kategori_adi;
+  kategoriler(this.kategori_adi,this.kategori_id);
+}
+class filmler{
+  late int film_id;
+  late String film_adi;
+  late int film_yili;
+  late kategoriler kategori;
+  late yonetmenler yonetmen;
+  filmler(this.film_adi,this.film_id,this.film_yili,this.kategori,this.yonetmen);
+}
+void main(){
+  var yonetmen1=yonetmenler("Nuri Bilge Ceylan",1 );
+  var yonetmen2=yonetmenler("Quetin Tarantino",2 );
+  var kategor1=kategoriler("Dram",1);
+  var kategor2=kategoriler("Komedi",2);
+  var filmtablosu1=filmler("Django",1,2013,kategor1,yonetmen2);
+  print("film id : ${filmtablosu1.film_id}");
+  print("film adi : ${filmtablosu1.film_adi}");
+  print("film yili : ${filmtablosu1.film_yili}");
+  print("kategori id : ${filmtablosu1.kategori.kategori_adi}");
+  print("yonetmen id : ${filmtablosu1.yonetmen.yonetmen_adi}");
+}
 
 
 
 
-// ---------------------------------------------  STATİC  KULLANIMI -----------------------------------------------------------------------------
+// ---------------------------------------------  Inheritance (kalıtım)  KULLANIMI -----------------------------------------------------------------------------
 
 
 
