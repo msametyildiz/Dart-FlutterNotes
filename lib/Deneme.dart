@@ -4,4 +4,7 @@ void main(){
 
   var d =deneme2();
   d.carpma();
+
+  print(deneme2.sayi);
+  
 }

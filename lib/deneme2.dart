@@ -14,4 +14,9 @@ class deneme2{
     print(carpma);
   }
 
+
+  static int sayi=10;
+  static void method(){
+    print("merhaba");
+  }
 }

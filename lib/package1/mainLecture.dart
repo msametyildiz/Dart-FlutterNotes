@@ -322,9 +322,8 @@ print("ad :  ${nesne.name} \nyas : ${nesne.age}");
 // ---------------------------------------------PUBLIC and PRIVATE KULLANIMI -----------------------------------------------------------------------------
 
 class a{
-late int publicDegisken;
-late int _privateDegisken;
-
+  late int publicDegisken;
+  late int _privateDegisken;
 }
 
 
@@ -334,4 +333,63 @@ nesne.priveteDegisken=23;// burada degisken private oldugundan dolayı hata alı
 
 
 
-// ---------------------------------------------      KULLANIMI -----------------------------------------------------------------------------
+// ---------------------------------------------  STATİC  KULLANIMI -----------------------------------------------------------------------------
+
+class deneme2{
+  static int sayi=10;
+  static void method(){
+  print("merhaba");
+  }
+}
+deneme2.sayi=20; // static değerini değitirme yapabiliriz
+print(deneme2.sayi);// static değişkenlere nesne olmadan direkt sınıfın kendisiyle ulaşım sağlayabiliriz .
+// hızlı ulaşmak istediğimiz değerlere static verebiliriz. ama bu durum programın performansını olumsuz olarak etkileyebilir.
+
+
+// ---------------------------------------------  ENUMERATİON (enum )  KULLANIMI -----------------------------------------------------------------------------
+
+enum UrunBoyut{
+Kucuk,Orta,Buyuk
+}
+
+
+void main(){
+  ucretal(UrunBoyut.Orta);   //   output : 900
+  ucretal(UrunBoyut.Buyuk);  //   output : 1200
+
+}
+
+void ucretal(UrunBoyut boyut){
+
+  switch(boyut){
+  case UrunBoyut.Kucuk:
+    print(20*30);
+    break;
+  case UrunBoyut.Buyuk:
+    print(40*30);
+    break;
+  case UrunBoyut.Orta:
+    print(30*30);
+    break;
+  default:
+    break;
+  }
+}
+
+
+// ---------------------------------------------  COMPOSİTİON  KULLANIMI -----------------------------------------------------------------------------
+
+
+
+
+// ---------------------------------------------  STATİC  KULLANIMI -----------------------------------------------------------------------------
+
+
+
+
+// ---------------------------------------------  STATİC  KULLANIMI -----------------------------------------------------------------------------
+
+
+
+
+// ---------------------------------------------  STATİC  KULLANIMI -----------------------------------------------------------------------------
