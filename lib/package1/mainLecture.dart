@@ -438,11 +438,154 @@ void main(){
 // ---------------------------------------------  Inheritance (kalıtım)  KULLANIMI -----------------------------------------------------------------------------
 
 
+// kalıtım bir önceki sınıftan türetilir. bir üst sınıfa supeclass alt sınafa subclass denir
+class arac{
+  late String renk;
+  late String vites;
+  arac(this.renk,this.vites);
+}
+class araba extends arac{
+  late String kasatipi;
+  araba(this.kasatipi,super.renk, super.vites);
+}
+class nissan extends araba{
+  late String model;
+  nissan(this.model,super.kasatipi,super.renk,super.vites);
+}
+void main(){
+  var nissan1=nissan("2023", "sedan", "mavi", "manuel");
+  print("Bilgiler : ");
+  print("model: ${nissan1.model}");
+  print("kasa tipi: ${nissan1.kasatipi}");
+  print("renk : ${nissan1.renk}");
+  print("vites: ${nissan1.vites}");
+}
 
 
-// ---------------------------------------------  STATİC  KULLANIMI -----------------------------------------------------------------------------
+// ---------------------------------------------  Override (Overriding) KULLANIMI -----------------------------------------------------------------------------
+
+// kalıtım ilişkisinin üst sınıfın methodunu alt sınıftan tekrar kullanma yetisi
+class hayvan{
+  void sescikar(){
+  print("ses yok ");
+  }
+}
+class memeli extends hayvan{
+}
+class kopek extends memeli{
+  @override
+  void sescikar(){
+  print("hav hav");
+  }
+}
+class kedi extends memeli{
+  @override
+  void sescikar(){
+  print("miyav miyav");
+  }
+}
+void main(){
+  var hayvan1=hayvan();
+  hayvan1.sescikar();
+  var memeli1=memeli();
+  memeli1.sescikar();
+  var kedi1=kedi();
+  kedi1.sescikar();
+  var kopek1=kopek();
+  kopek1.sescikar();
+}
+//output = ses yok - ses yok - miyav miyav - hav hav
+
+// ---------------------------------------------  PolyMorphism  KULLANIMI -----------------------------------------------------------------------------
+
+class personel{
+  void isealindi(){
+    print("personel mutlu");
+  }
+}
+class mudur extends personel{
+  void iseal(personel p){
+    p.isealindi();
+  }
+  void terfiettir(personel p){
+    (p as ogretmen).maasarttir();
+  }
+}
+class isci extends personel{
+  void maasarttir(){
+   print("maas arttı isci mutlu");
+  }
+}
+void main(){
+  personel isci1= isci();
+  personel ogretmen1=ogretmen();
+  var mudur1=mudur();
+  mudur1.iseal(isci1);
+  mudur1.terfiettir(ogretmen1);
+  mudur1.terfiettir(isci1);// burada hata verecektir cunku isci ogretmen sınıfına donusmez
+}
+
+// ---------------------------------------------  Tip	Kontrolü	- is   -----------------------------------------------------------------------------
+
+//Tip	kontrolü is	ile	yapılabilir.is	true false şeklinde	bilgi	verir
+//burada ogr bir ogretmen mi diye sorgu alır true yada false degeri dondurur.
+void main(){
+  var ogr=ogretmen();
+  if(ogr is ogretmen){
+    print("ogretmen");
+  }
+  else{
+    print("ogretmen degil");
+  }
+}
+
+// ---------------------------------------------  Downcasting – UpCasting -----------------------------------------------------------------------------
 
 
 
 
-// ---------------------------------------------  STATİC  KULLANIMI -----------------------------------------------------------------------------
+class ev { }
+class saray extends ev{ }
+class villa extends ev{ }
+
+//Upcasting : (saray bir evdir )
+var saray1=saray();
+ev ev1=saray();
+
+//Downcasting – as : ( ev bir villa mıdır ? )
+var ev1=ev();
+saray saray1=ev as saray;
+
+
+// ----------------------------- PolyMorphism Casting Hatası	Önleme Tip	Kontrolü	is --------------------------------------------
+
+
+// ---------------------------------------------     -----------------------------------------------------------------------------
+
+// ---------------------------------------------     -----------------------------------------------------------------------------
+
+// ---------------------------------------------     -----------------------------------------------------------------------------
+
+// ---------------------------------------------     -----------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

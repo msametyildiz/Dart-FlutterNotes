@@ -1,0 +1,1 @@
+class saray extends ev{ }
