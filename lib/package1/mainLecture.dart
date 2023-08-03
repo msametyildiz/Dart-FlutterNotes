@@ -446,7 +446,7 @@ class arac{
 }
 class araba extends arac{
   late String kasatipi;
-  araba(this.kasatipi,super.renk, super.vites);
+  araba(this.kasatipi,super.renk, super.vites);//  araba(this.kasatipi,String renk,String  vites):super(renk,vites);    bu diğer bir yazım türüdür
 }
 class nissan extends araba{
   late String model;
