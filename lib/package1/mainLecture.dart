@@ -560,7 +560,31 @@ saray saray1=ev as saray;
 // ----------------------------- PolyMorphism Casting Hatası	Önleme Tip	Kontrolü	is --------------------------------------------
 
 
-// ---------------------------------------------     -----------------------------------------------------------------------------
+// ---------------------------------------------  Interface Kullanımı   -----------------------------------------------------------------------------
+
+abstract class interface1{
+  late int degisken;
+  void method1();
+  String method2();
+}
+class classA implements interface1{
+  @override
+  late int degisken=10;
+  @override
+  void method1(){
+    print("interface merhaba");
+  }
+  @override
+  String method2(){
+    return "interface calismasi";
+  }
+}
+void main(){
+  var a = classA();
+  print(a.degisken);
+  a.method1();
+  print(a.method2());
+}
 
 // ---------------------------------------------     -----------------------------------------------------------------------------
 
