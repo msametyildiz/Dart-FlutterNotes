@@ -1,3 +1,4 @@
+import 'dart:collection';
 import 'dart:io';
 import 'dart:math';
 
@@ -561,7 +562,7 @@ saray saray1=ev as saray;
 
 
 // ---------------------------------------------  Interface Kullanımı   -----------------------------------------------------------------------------
-
+//bir sınıfa birden fazla interface verebiliriz
 abstract class interface1{
   late int degisken;
   void method1();
@@ -586,7 +587,167 @@ void main(){
   print(a.method2());
 }
 
-// ---------------------------------------------     -----------------------------------------------------------------------------
+// ---------------------------------------------  Collection Kullanımı   -----------------------------------------------------------------------------
+// 1-List (aynı türden verileri bir arada tutmaya yarar - düzenli)
+// 2-HashSet (aynı türden veriyi kaydetmez- düzen yok)
+// 3-HashMap
+
+//          1-LIST
+//  2 çeşit tanımlanma vardır.
+// var meyveler = <String>[];
+// var plakalar = [06,02,12,50];
+
+                                                                                                        // Listeye ekleme ve okuma işlemleri
+
+  var meyveler = <String>[];
+  meyveler.add("elma");
+  meyveler.add("muz");
+  meyveler.add("cilek");
+  meyveler.add("kivi");
+  meyveler.add("karpuz");
+  print(meyveler.isEmpty);  // liste boş mu sorusu
+  print(meyveler.length);   // listenin boyutunu verir
+  print(meyveler.first);    // listenin ilk elemanını verir
+  print(meyveler.last);     // listenin son elemanini verir
+  print(meyveler.contains("elma"));     // listenin icerisinde elma adında bir degisken var mı
+  print(meyveler.reversed); // listeyi tersten yazdırma
+  var liste = meyveler.reversed.toList();
+  print(liste);             // buda listelemenin başka bir yolu
+
+  meyveler.sort();          // burada listeyi sıralar (harfsel bir sıralama yapar)
+  print(meyveler);
+
+  meyveler.remove("muz");   // lsiteden değişken silme
+  print(meyveler);
+  meyveler.removeAt(2);     // 2. indexi silecektir
+  print(meyveler);
+  meyveler.clear();         // listeyi sıfırlama (listenin bütün elemanlarini siler );
+  print(meyveler);
+                                                                                                      // list leri listeleme islemleri
+  for (var m in meyveler){
+    print(m); // print("sonuc : $m");
+  }
+  for(var i=0;i<meyveler.length;i++){
+    print("${i+1} . index ${meyveler[i]}");
+  }
+                                                                                                      // LİST İLE NESNE TABANLI ÇALIŞMA
+  void main(){
+  var o1 =ogrenciler("samet", 123, "3.sinif");
+  var o2=ogrenciler("ali", 129, "3.sinif");
+  var o3=ogrenciler("Zeliha",135, "4.sinif");
+  var ogrenci = <ogrenciler>[];
+  ogrenci.add(o1);
+  ogrenci.add(o2);
+  ogrenci.add(o3);
+  for (var o in ogrenci){
+    print("no : ${o.no}\tname : ${o.name}\t sinif : ${o.sinif} ");
+    }
+  }
+
+  class ogrenciler{
+    late int no;
+    late String name;
+    late String sinif;
+    ogrenciler(this.name,this.no,this.sinif);
+  }
+                                                                                                      // LISTLERDE SIRALAMA İSLEMLERİ
+//BU İŞLEMDE Comparable sınıfını kullanacağım compareTo
+  print("_____________ogrencileri no ya gore kücükten büyüğe sıralar_____________________");
+  Comparator<ogrenciler>siralama1 = (x,y) => x.no.compareTo(y.no);
+  ogrenci.sort(siralama1);
+  for (var o in ogrenci){
+    print("no : ${o.no}\tname : ${o.name}\t sinif : ${o.sinif} ");
+  }
+  print("_____________ogrencileri no ya gore büyükten kücüğe sıralar_____________________");
+  Comparator<ogrenciler>siralama2 = (y,x) => x.no.compareTo(y.no);
+  ogrenci.sort(siralama2);
+  for (var o in ogrenci){
+    print("no : ${o.no}\tname : ${o.name}\t sinif : ${o.sinif} ");
+  }
+  print("_____________ogrencileri name e gore kücükten büyüğe sıralar_____________________");
+  Comparator<ogrenciler>siralama3 = (x,y) => x.name.compareTo(y.name);
+  ogrenci.sort(siralama3);
+  for (var o in ogrenci){
+    print("no : ${o.no}\tname : ${o.name}\t sinif : ${o.sinif} ");
+  }
+  print("_____________ogrencileri name e gore büyükten kücüğe sıralar_____________________");
+  Comparator<ogrenciler>siralama4 = (y,x) => x.name.compareTo(y.name);
+  ogrenci.sort(siralama4);
+  for (var o in ogrenci){
+    print("no : ${o.no}\tname : ${o.name}\t sinif : ${o.sinif} ");
+  }
+                                                                                                  // LISTLERDE FİLTRELEME İSLEMLERİ
+//BU İŞLEMDE Iterable sınıfını kullanacağım
+  Iterable<ogrenciler>filtrelenList = ogrenci.where((ogr) {
+    return ogr.no>125;  // ogrenci.no su 100 den büyük olanları filtreler
+    return ogr.name.contains("e");   // bu ifade ise namein içerisinde e hari olanları filtreler
+});
+  ogrenci = filtrelenList.toList();
+  //filtrelenen sonucu listeye aktarma  toList fonk listeye dönüştür demek
+  for (var o in ogrenci){
+    print("no : ${o.no}\tname : ${o.name}\t sinif : ${o.sinif} ");
+  }
+                                                                                                 // LİSTELERDE ORT HESAPLAMA
+  var liste =<int>[];
+  liste.add(50);
+  liste.add(10);
+  liste.add(80);
+  liste.add(60);
+  liste.add(40);
+  var toplam =0;
+  for(var l in liste){
+  toplam+=l;
+  }
+  print("sonuc : ${toplam/liste.length}");
+                                                                                                 // LiSTELERDE İÇERİK DEĞİŞTİRME
+  for (var i=0; i<liste.length;i++){
+    liste[i]=liste[i]*2;
+  }
+  for (var l in liste){
+    print(l);
+  }
+
+                                                                                                  // LiSTELERDE TEK VE ÇİFT DEĞİŞKENLERİ BULMA
+  var liste =<int>[];
+  liste.add(5);
+  liste.add(10);
+  liste.add(8);
+  liste.add(60);
+  liste.add(41);
+  var cift= <int>[];
+  var tek = <int>[];
+  for (var l in liste){
+    if(l%2==0){
+     cift.add(l);}
+    else{
+      tek.add(l);
+    }
+  }
+  print("Cift sayilar : ");
+  for (var c in cift){
+    print(c);
+  }
+  print("Tek sayilar : ");
+  for( var t in tek){
+    print(t);
+  }
+                                                                                                      // RASTGELE SAYI ÜRETME
+  import 'dart:math';
+  var liste=<int>[];
+  var r =Random();
+  var i=0;
+  while(i<10){
+    liste.add(r.nextInt(100));
+    i++;
+  }
+  liste.sort(); // küçükten büyüğe sıralama
+  for (var l in liste){
+    print(l);
+  }
+
+
+
+
 
 // ---------------------------------------------     -----------------------------------------------------------------------------
 
