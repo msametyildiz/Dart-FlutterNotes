@@ -745,6 +745,21 @@ void main(){
     print(l);
   }
 
+                                                                                                        // LİSTELERDE STRİNG İFADE ARAMA
+  var liste = <String>[];
+  liste.add("samet");
+  liste.add("ali");
+  liste.add("veli");
+  liste.add("zeynep");
+  liste.add("nur");
+  print("arama icin isim giriniz ");
+  String arama= stdin.readLineSync()!;
+  for (var l in liste){
+  if(l==arama){
+    print("isim mevcut");
+    break;
+    }
+  }
 
 
 

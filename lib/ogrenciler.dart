@@ -1,6 +1,9 @@
-class ogrenciler{
-  late int no;
+class ogrenciler {
+  late int no ;
   late String name;
-  late String sinif;
-  ogrenciler(this.name,this.no,this.sinif);
+  late double ort;
+  late int vizen;
+  late int finaln;
+  late String durum ;
+  ogrenciler(this.no,this.name,this.vizen,this.finaln);
 }
