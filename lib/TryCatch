@@ -1,0 +1,23 @@
+derleme sırasında oluşabilecek hatalar için kullanılır .
+
+try {
+    kontrol edilecek kodlar buraya yazılmalır
+}catch(e){
+    hata oluşunca burası çalışır
+}
+
+
+  var sayilar = <int>[];
+  sayilar.add(12);  //0.index
+  sayilar.add(53);  //1.index
+  sayilar.add(25);  //2.index
+
+  sayilar[2]=20; // burada hata almayız 2. index var
+  //sayilar[3]=10; // burada hata alırız çünkü 3.index yok
+  // bu yapıdan sonra hata olduğu satırdan itibaren try duracak ve catch e geçecek
+  try{
+    sayilar[3]=10;
+    print("islem tamam ");
+  }catch(e){
+    print("listenin boyutunu astınız . ");
+  }

@@ -766,152 +766,267 @@ void main(){
 // içerisine eklenen veriler düzensiz bir şekilde kayıt edilir
 // aynı veriden tekrar kayıt edilmez
 
-var sayilar = HashSet<int>();
-var isimler = HashSet.from(["ali","veli"]);
-//iki farklı türde kayıt işlemleri olmaktadır.
+  var sayilar = HashSet<int>();
+  var isimler = HashSet.from(["ali","veli"]);
+  //iki farklı türde kayıt işlemleri olmaktadır.
 
 
-import 'dart:collection';
-void main() {
-var sayilar = HashSet<int>();
-var isimler = HashSet.from(["ali","veli"]);
-var meyveler = HashSet<String>();
-meyveler.add("elma");
-meyveler.add("muz");
-meyveler.add("kivi");
-print(meyveler);
-print(meyveler.elementAt(0)); // burada 0. indexde ne olduğunu bilmiyoruz ama bu fonksiyonu kullnamak mümkün
-print(meyveler.length); //boyutunu verir
-print(meyveler.isEmpty); // hashset boş mu
-print(meyveler.contains("muz")); // burada hashset te muz degiskeni var mi (true - false doner )
-for (var m in meyveler){
-print(m);
-}
+  import 'dart:collection';
+  void main() {
+  var sayilar = HashSet<int>();
+  var isimler = HashSet.from(["ali","veli"]);
+  var meyveler = HashSet<String>();
+  meyveler.add("elma");
+  meyveler.add("muz");
+  meyveler.add("kivi");
+  print(meyveler);
+  print(meyveler.elementAt(0)); // burada 0. indexde ne olduğunu bilmiyoruz ama bu fonksiyonu kullnamak mümkün
+  print(meyveler.length); //boyutunu verir
+  print(meyveler.isEmpty); // hashset boş mu
+  print(meyveler.contains("muz")); // burada hashset te muz degiskeni var mi (true - false doner )
+  for (var m in meyveler){
+  print(m);
+  }
 
-for (var i=0;i<meyveler.length;i++){
-print("$i .index : ${meyveler.elementAt(i)}");
-}
+  for (var i=0;i<meyveler.length;i++){
+  print("$i .index : ${meyveler.elementAt(i)}");
+  }
 
-meyveler.remove("elma"); // elma değişkenini siler
-print(meyveler);
-meyveler.clear();// bütün değişkenleri siler
-}
+  meyveler.remove("elma"); // elma değişkenini siler
+  print(meyveler);
+  meyveler.clear();// bütün değişkenleri siler
+  }
 
-//HashSet ile ogrenci sistemi ( aynı no ya ait kayıt etmiyor  )
-class ogrenciler {
-late String name;
-late int no;
-late String sinif;
-ogrenciler(this.name,this.no,this.sinif);
+  //HashSet ile ogrenci sistemi ( aynı no ya ait kayıt etmiyor  )
+  class ogrenciler {
+  late String name;
+  late int no;
+  late String sinif;
+  ogrenciler(this.name,this.no,this.sinif);
 
-@override
-int get hashCode => this.no;
+  @override
+  int get hashCode => this.no;
 
-@override
-bool operator ==(Object other) {
-if( no == (other as ogrenciler).no){
-return true;
-}else{
-return false;
-}
-}
-}
-import 'dart:collection';
-import 'package:deneme/kisiler.dart';
-void main(){
-var o1 = ogrenciler("samet", 12, "1.sinif");
-var o2 = ogrenciler("hakan", 25, "2.sinif");
-var o3 = ogrenciler("selen", 35, "5.sinif");
-var o4 = ogrenciler("zehra", 35, "7.sinif");
-var hset = HashSet<ogrenciler>();
-hset.add(o1);
-hset.add(o2);
-hset.add(o3);
-hset.add(o4);
-for (var h in hset){
-print("${h.no} - ${h.name}  -> ${h.sinif}");
-}
-}
-
-
-// ---------------------------------------------  HashMap kullanimi   -----------------------------------------------------------------------------
-
-//key value ilişkisi ile çalışır . key ile verilere erisiriz
-//    <x,y>  arasında yazılanların  ilki (x) keyin türü ikincisi (y) degişkenin türü
-var sayilar = HashMap<int,String>();
-var oranlar = HashMap<double, String>();
+  @override
+  bool operator ==(Object other) {
+  if( no == (other as ogrenciler).no){
+  return true;
+  }else{
+  return false;
+  }
+  }
+  }
+  import 'dart:collection';
+  import 'package:deneme/kisiler.dart';
+  void main(){
+  var o1 = ogrenciler("samet", 12, "1.sinif");
+  var o2 = ogrenciler("hakan", 25, "2.sinif");
+  var o3 = ogrenciler("selen", 35, "5.sinif");
+  var o4 = ogrenciler("zehra", 35, "7.sinif");
+  var hset = HashSet<ogrenciler>();
+  hset.add(o1);
+  hset.add(o2);
+  hset.add(o3);
+  hset.add(o4);
+  for (var h in hset){
+  print("${h.no} - ${h.name}  -> ${h.sinif}");
+  }
+  }
 
 
-// HashMap ile verileri eklme ve yazdırma
-var iller= HashMap<int ,String>();
-iller[06] = "Ankara";
-iller[01] = "Adana";
-iller[34] = "Istanbul";
-iller[16] = "Bursa";
-print(iller);
+  // ---------------------------------------------  HashMap kullanimi   -----------------------------------------------------------------------------
 
-//HASHMAP YAPISI VE FONKSİYONLAR
-import 'dart:collection';
-import 'package:deneme/iller.dart';
-void main(){
-var iller= HashMap<int ,String>();
-iller[06] = "Ankara";
-iller[01] = "Adana";
-iller[34] = "Istanbul";
-iller[16] = "Bursa";
-print(iller);         // illeri yazdirmak
-print(iller.length);  // boyut bulma
-print(iller.isEmpty); // dolu mu boş mu bulma
-
-print(iller.containsKey(06));         // bu keye ait bir kayit var mı
-print(iller.containsValue("Ankara")); // bu value ya ait kayit var mı
-
-var anahtar = iller.keys;
-for (var a in anahtar){
-print("Sonuc : ${iller[a]}");
-}
-
-iller.remove(01);     // kayıt silme (key e gore )
-print(iller);
-
-iller.clear();        // tüm kaydi silme
-print(iller);
-}
-// HASHMAP İLE NESNE TABANLI UYGULAMA
-
-class kisiler {
-late int tcno ;
-late String name;
-kisiler(this.tcno,this.name);
-}
-import 'dart:collection';
-import 'package:deneme/kisiler.dart';
-void main(){
-var k1 = kisiler(111111, "samet");
-var k2 = kisiler(222222, "sude");
-var k3 = kisiler(333333, "ece");
-var k4 = kisiler(444444, "elif");
-var kisi = HashMap<int , kisiler>();
-kisi[k1.tcno] = k1;
-kisi[k2.tcno] = k2;
-kisi[k3.tcno] = k3;
-kisi[k4.tcno] = k4;
-var anahtar = kisi.keys;
-for (var a in anahtar){
-var kisiler = kisi[a];
-if(kisiler != null){
-print("${kisiler.tcno} -> ${kisiler.name}");
-}
-}
-}
+  //key value ilişkisi ile çalışır . key ile verilere erisiriz
+  //    <x,y>  arasında yazılanların  ilki (x) keyin türü ikincisi (y) degişkenin türü
+  var sayilar = HashMap<int,String>();
+  var oranlar = HashMap<double, String>();
 
 
+  // HashMap ile verileri eklme ve yazdırma
+  var iller= HashMap<int ,String>();
+  iller[06] = "Ankara";
+  iller[01] = "Adana";
+  iller[34] = "Istanbul";
+  iller[16] = "Bursa";
+  print(iller);
+
+  //HASHMAP YAPISI VE FONKSİYONLAR
+  import 'dart:collection';
+  import 'package:deneme/iller.dart';
+  void main(){
+  var iller= HashMap<int ,String>();
+  iller[06] = "Ankara";
+  iller[01] = "Adana";
+  iller[34] = "Istanbul";
+  iller[16] = "Bursa";
+  print(iller);         // illeri yazdirmak
+  print(iller.length);  // boyut bulma
+  print(iller.isEmpty); // dolu mu boş mu bulma
+
+  print(iller.containsKey(06));         // bu keye ait bir kayit var mı
+  print(iller.containsValue("Ankara")); // bu value ya ait kayit var mı
+
+  var anahtar = iller.keys;
+  for (var a in anahtar){
+  print("Sonuc : ${iller[a]}");
+  }
+
+  iller.remove(01);     // kayıt silme (key e gore )
+  print(iller);
+
+  iller.clear();        // tüm kaydi silme
+  print(iller);
+  }
+  // HASHMAP İLE NESNE TABANLI UYGULAMA
+
+  class kisiler {
+  late int tcno ;
+  late String name;
+  kisiler(this.tcno,this.name);
+  }
+  import 'dart:collection';
+  import 'package:deneme/kisiler.dart';
+  void main(){
+  var k1 = kisiler(111111, "samet");
+  var k2 = kisiler(222222, "sude");
+  var k3 = kisiler(333333, "ece");
+  var k4 = kisiler(444444, "elif");
+  var kisi = HashMap<int , kisiler>();
+  kisi[k1.tcno] = k1;
+  kisi[k2.tcno] = k2;
+  kisi[k3.tcno] = k3;
+  kisi[k4.tcno] = k4;
+  var anahtar = kisi.keys;
+  for (var a in anahtar){
+  var kisiler = kisi[a];
+  if(kisiler != null){
+  print("${kisiler.tcno} -> ${kisiler.name}");
+  }
+  }
+  }
+
+  //STRİNGLERİN KULLANIMI VE METHODLAR
+  //STRİNG İFADELERİ TANIMMI
+  String str = "Merhaba";
+  String str2 = """
+      merhaba
+      dunya
+    """;
+  int a=5,b=4;
+  String str3 = "$a * $b = ${a*b}";
+
+  String str4 = "Merhaba";
+  String str5 = "Merhaba";
+  if(str4 == str5){
+  print("$str4 ve $str5 esittir .");
+  }else{
+  print("$str4 ve $str5 esit degildir .");
+  }
+  //  STRİNG İFADELERDE METHODLAR
+  substring(0,3)
+  isempty
+  length
+  contains("a")
+  toLowerCase()
+  toLowerCase()
+  split(" ")
+  trim()
+
+  String str = "Merhaba";
+  print(str.substring(0,3)); // ilk 3 indexi yazar "Mer"
+
+  if(str.contains("x")){ // str x içeriyor mu      str.contains("aba") str aba içeriyor mu olur.
+  print("içeriyor");
+  }else{
+  print("icermiyor");
+  }
+
+  print(str.toUpperCase());  // tüm harfleri büyük yazar
+  print(str.toLowerCase());  // tüm harfleri küçük yazar
+
+  String str2 = "Merhaba Dunya Nasilsin";
+  var liste = str2.split(" "); // boşluk gördügü zaman oraya kadar olan kısmı listenin elemanına atar
+  //str2.split("a"); olsa idi a ya kadar olan kisimlari eleman yapar idi
+  for(var l in liste){
+  print(l);
+  print(l);
+  }
+
+  String str3 = " Merhaba "; // burada kullanıcıdan veri de alabilirdik
+  print(str3);               //  Merhaba
+  print(str3.trim());        // Merhaba    // kullanıcı başına ve sonuna boşluk bırakırsa o boşlukları silmeye yarar
+
+  print("$str3 boyutu : ${str3.length}");       // boyutu 9
+  print("$str3 boyutu : ${str3.trim().length}");// boyutu 7 çünlü boşluklar silinmiş hali
+
+  print(str3.isEmpty);  // ifade boş mu dolu mu
+
+  //  KLAVYEDEN GİRİLEN STRİNG BİR İFADEYİ TERS YAZDIRMA
+
+  import 'dart:io';
+  void main(){
+  print("kelime giriniz .");
+  String kelime = stdin.readLineSync()!;
+
+  String terskelime="";
+  for( var i=kelime.length-1;i>-1;i--){
+  terskelime+=kelime[i];
+  }
+  print(terskelime);
+  }
+
+// ---------------------------------------------  Try-Catch Kullanımı   -----------------------------------------------------------------------------
+
+  derleme sırasında oluşabilecek hatalar için kullanılır .
+
+  try {
+      kontrol edilecek kodlar buraya yazılmalır
+  }catch(e){
+      hata oluşunca burası çalışır
+  }
 
 
+  var sayilar = <int>[];
+  sayilar.add(12);  //0.index
+  sayilar.add(53);  //1.index
+  sayilar.add(25);  //2.index
+
+  sayilar[2]=20; // burada hata almayız 2. index var
+  //sayilar[3]=10; // burada hata alırız çünkü 3.index yok
+  // bu yapıdan sonra hata olduğu satırdan itibaren try duracak ve catch e geçecek
+  try{
+    sayilar[3]=10;
+    print("islem tamam ");
+  }catch(e){
+    print("listenin boyutunu astınız . ");
+  }
 
 
+    Asenkron işlemler aynı anda birden fazla işlem yapmak anlamına gelir .
+    aynı anda birden fazla işlem yapıldığı için daha verimli kod çalışması elde edilir
+
+        Future, async ve await
+        Future : fonksiyon tanımlanmasında fonksiyon isminden önce gelir. methodun asenkron olarak çalişacagini ve await methodu ile
+                  karşılaştığı zaman askıya alacağını bildirir.
+        Async : fonksiyon tanımlanmasından sonra gelir ve asenkron çalışmak istediğimiz yapılarda kullanılır ve aynı zamanda birden
+                  fazla işlem yaptırmak için kullanılır. ornek : dosya işlemleri, internetten veri alirken gibi
+        Await : Sadece async fonksiyonları içerisinde kullanılır .amaç asenkron işlemler yaparken yarım kalan bazı kodlama hataları olabilir
+                  hata oluşturmaması için await kullanılır ve asenkron işlemler içinde kodlamanın bitmesi beklenir.
 
 
+    Future<void> main () async {
+        print("Verilerin Alınması Bekleniyor...");
+        var veri = await veriTabaniVeriAl();   // burada await yazmaz isek program çalışır fakat bu kısımda bir hata alınır
+        print("Veriler alınıyor...");
+        print("Alınan Veri : $veri");
+    }
+
+    Future<String> veriTabaniVeriAl() async{
+        for (var i=1;i<=5;i++){
+            Future.delayed(Duration(seconds: i), () => print("Alinan veri miktari : ${i*20}"));
+        }
+        return Future.delayed(Duration(seconds: 5), () => "Veritabanı Veri Kümesi");
+    }
 
 
 
