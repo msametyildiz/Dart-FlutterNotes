@@ -8,7 +8,7 @@ class ogrenciler {
   ogrenciler(this.no,this.name,this.sinif);
 }
 import 'dart:io';
-import 'package:deneme/ogrenciler.dart';
+import 'package:deneme/kisiler.dart';
 void main(){
   var okul = <ogrenciler>[];
   var o1 = ogrenciler(2, "samet", "2.sinif");
@@ -33,7 +33,7 @@ void main(){
   }
   import 'dart:io';
   import 'dart:math';
-  import 'package:deneme/ogrenciler.dart';
+  import 'package:deneme/kisiler.dart';
   void main(){
     var okul = <ogrenciler>[];
     var r=Random();
@@ -70,7 +70,7 @@ void main(){
   }
   import 'dart:io';
   import 'dart:math';
-  import 'package:deneme/ogrenciler.dart';
+  import 'package:deneme/kisiler.dart';
   void main(){
     var okul=<ogrenciler>[];
     while(true){

@@ -591,6 +591,7 @@ void main(){
 // 1-List (aynı türden verileri bir arada tutmaya yarar - düzenli)
 // 2-HashSet (aynı türden veriyi kaydetmez- düzen yok)
 // 3-HashMap
+// ---------------------------------------------  List Kullanımı   -----------------------------------------------------------------------------
 
 //          1-LIST
 //  2 çeşit tanımlanma vardır.
@@ -761,14 +762,148 @@ void main(){
     }
   }
 
+// ---------------------------------------------  HashSet kullanımı    -----------------------------------------------------------------------------
+// içerisine eklenen veriler düzensiz bir şekilde kayıt edilir
+// aynı veriden tekrar kayıt edilmez
+
+var sayilar = HashSet<int>();
+var isimler = HashSet.from(["ali","veli"]);
+//iki farklı türde kayıt işlemleri olmaktadır.
 
 
+import 'dart:collection';
+void main() {
+var sayilar = HashSet<int>();
+var isimler = HashSet.from(["ali","veli"]);
+var meyveler = HashSet<String>();
+meyveler.add("elma");
+meyveler.add("muz");
+meyveler.add("kivi");
+print(meyveler);
+print(meyveler.elementAt(0)); // burada 0. indexde ne olduğunu bilmiyoruz ama bu fonksiyonu kullnamak mümkün
+print(meyveler.length); //boyutunu verir
+print(meyveler.isEmpty); // hashset boş mu
+print(meyveler.contains("muz")); // burada hashset te muz degiskeni var mi (true - false doner )
+for (var m in meyveler){
+print(m);
+}
 
-// ---------------------------------------------     -----------------------------------------------------------------------------
+for (var i=0;i<meyveler.length;i++){
+print("$i .index : ${meyveler.elementAt(i)}");
+}
 
-// ---------------------------------------------     -----------------------------------------------------------------------------
+meyveler.remove("elma"); // elma değişkenini siler
+print(meyveler);
+meyveler.clear();// bütün değişkenleri siler
+}
+
+//HashSet ile ogrenci sistemi ( aynı no ya ait kayıt etmiyor  )
+class ogrenciler {
+late String name;
+late int no;
+late String sinif;
+ogrenciler(this.name,this.no,this.sinif);
+
+@override
+int get hashCode => this.no;
+
+@override
+bool operator ==(Object other) {
+if( no == (other as ogrenciler).no){
+return true;
+}else{
+return false;
+}
+}
+}
+import 'dart:collection';
+import 'package:deneme/kisiler.dart';
+void main(){
+var o1 = ogrenciler("samet", 12, "1.sinif");
+var o2 = ogrenciler("hakan", 25, "2.sinif");
+var o3 = ogrenciler("selen", 35, "5.sinif");
+var o4 = ogrenciler("zehra", 35, "7.sinif");
+var hset = HashSet<ogrenciler>();
+hset.add(o1);
+hset.add(o2);
+hset.add(o3);
+hset.add(o4);
+for (var h in hset){
+print("${h.no} - ${h.name}  -> ${h.sinif}");
+}
+}
 
 
+// ---------------------------------------------  HashMap kullanimi   -----------------------------------------------------------------------------
+
+//key value ilişkisi ile çalışır . key ile verilere erisiriz
+//    <x,y>  arasında yazılanların  ilki (x) keyin türü ikincisi (y) degişkenin türü
+var sayilar = HashMap<int,String>();
+var oranlar = HashMap<double, String>();
+
+
+// HashMap ile verileri eklme ve yazdırma
+var iller= HashMap<int ,String>();
+iller[06] = "Ankara";
+iller[01] = "Adana";
+iller[34] = "Istanbul";
+iller[16] = "Bursa";
+print(iller);
+
+//HASHMAP YAPISI VE FONKSİYONLAR
+import 'dart:collection';
+import 'package:deneme/iller.dart';
+void main(){
+var iller= HashMap<int ,String>();
+iller[06] = "Ankara";
+iller[01] = "Adana";
+iller[34] = "Istanbul";
+iller[16] = "Bursa";
+print(iller);         // illeri yazdirmak
+print(iller.length);  // boyut bulma
+print(iller.isEmpty); // dolu mu boş mu bulma
+
+print(iller.containsKey(06));         // bu keye ait bir kayit var mı
+print(iller.containsValue("Ankara")); // bu value ya ait kayit var mı
+
+var anahtar = iller.keys;
+for (var a in anahtar){
+print("Sonuc : ${iller[a]}");
+}
+
+iller.remove(01);     // kayıt silme (key e gore )
+print(iller);
+
+iller.clear();        // tüm kaydi silme
+print(iller);
+}
+// HASHMAP İLE NESNE TABANLI UYGULAMA
+
+class kisiler {
+late int tcno ;
+late String name;
+kisiler(this.tcno,this.name);
+}
+import 'dart:collection';
+import 'package:deneme/kisiler.dart';
+void main(){
+var k1 = kisiler(111111, "samet");
+var k2 = kisiler(222222, "sude");
+var k3 = kisiler(333333, "ece");
+var k4 = kisiler(444444, "elif");
+var kisi = HashMap<int , kisiler>();
+kisi[k1.tcno] = k1;
+kisi[k2.tcno] = k2;
+kisi[k3.tcno] = k3;
+kisi[k4.tcno] = k4;
+var anahtar = kisi.keys;
+for (var a in anahtar){
+var kisiler = kisi[a];
+if(kisiler != null){
+print("${kisiler.tcno} -> ${kisiler.name}");
+}
+}
+}
 
 
 
